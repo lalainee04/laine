@@ -58,3 +58,7 @@ streamlit.text(my_data_row)
 
 
 import streamlit as st
+from snowflake.snowpark.context import get_active_session
+session = get_active_session()
+sql = f"select * from snowflake_sample_data.tpch_sf1.lineitem limit 20"
+data = session.sql(sql).collect()
