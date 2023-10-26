@@ -63,5 +63,4 @@ session = get_active_session()
 sql = f"select * from snowflake_sample_data.tpch_sf1.lineitem limit 20"
 data = session.sql(sql).collect()
 
-conda install snowflake-snowpark-python
 
