@@ -49,4 +49,4 @@ streamlit.write('The user entered ', fruit_choice)
 
 import snowflake.connector
 
-/home/adminuser/venv/bin/python -m pip install --upgrade pip
+
