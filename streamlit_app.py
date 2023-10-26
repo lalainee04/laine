@@ -63,4 +63,4 @@ session = get_active_session()
 sql = f"select * from snowflake_sample_data.tpch_sf1.lineitem limit 20"
 data = session.sql(sql).collect()
 
-conda create --name py38_env --override-channels -c https://repo.anaconda.com/pkgs/snowflake python=3.8 numpy pandas
+
