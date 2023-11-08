@@ -51,7 +51,6 @@ streamlit.write('The user entered ', fruit_choice)
 import snowflake.connector
 streamlit.write('Thanks for adding ', add_myfruit)
 
-#This will not work correctly, but just go with it for now
-my_cur.execute ("insert into fruit_load_list values ('from streamlit')")
+
 
 
