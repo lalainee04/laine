@@ -59,13 +59,5 @@ if streamlit.button('Get fruit List'):
 	
 
 
-streamlit.dataframe(my_fruit_list)
 
-# Let's put a pick list here so they can pick the fruit they want to include 
-
-#import snowflake.connector
-
-
-#display the table on the page 
-streamlit.dataframe(fruits_to_show)
 
