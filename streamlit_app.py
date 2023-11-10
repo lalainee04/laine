@@ -57,7 +57,28 @@ if streamlit.button('Get fruit List'):
 	my_data_rows = get_fruit_load_list()
 	streamlit.dataframe(my_data_rows)
 	
+streamlit.dataframe(my_fruit_list)
 
+# Let's put a pick list here so they can pick the fruit they want to include 
+
+#import snowflake.connector
+
+
+#display the table on the page 
+streamlit.dataframe(fruits_to_show)
+
+
+# don't run anything past here while we troubleshoot 
+streamlit.stop()
+
+#import snowflake.connector
+
+
+#import requests
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+streamlit.text(fruityvice_response)
+
+streamlit.header("Fruityvice Fruit Advice!")
 
 
 
