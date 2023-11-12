@@ -24,7 +24,6 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(my_fruit_list)
 
 
-
 #create the repeatable code block (called a function)
 def get_fruityvice_data(this_fruit_choice):
 	fruityvice_response = requests.get("http://fruityvice.com/api/fruit/" + this_fruit_choice)
@@ -41,6 +40,10 @@ try:
 		back_from_function = get_fruityvice_data(fruit_choice)
 		streamlit.dataframe(back_from_function)
 
+
+
+# This will not work correctly, but just go with it for now 
+my_cur.execute("insert into fruit_load_list values ('from streamlit')")
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
