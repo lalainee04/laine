@@ -25,13 +25,6 @@ streamlit.dataframe(my_fruit_list)
 
 
 
-#create the repeatable code block (called a function)
-def get_fruityvice_data(this_fruit_choice):
-	Fruity_response = requests.get("http://fruityvice.com/api/fruit/" + this_fruit_choice)
-	fruityvice_normalized = pandas.json_normalize(fruity_response.json())
-	return fruityvice_normalized
-	
-	
 #New Section to display fruityvice api response 
 streamlit.header('Fruityvice Fruit Advice!')
 try: 
@@ -41,7 +34,10 @@ try:
 	else: 
 		Fruity_response = requests.get("http://fruityvice.com/api/fruit"+fruit_choice)
 		fruityvice_normalized = pandas.json_normalize(fruity_response.json())
-		streamlit.dataframe(back_from_function)
+		streamlit.dataframe(fruityvice_normalized)
+		
+except URLError as e:
+	streamlit.error 
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
