@@ -31,6 +31,9 @@ fruit_choice = streamlit.text_input('What fruit would you like information about
 Streamlit.write('The user entered', Fruit_choice)
 
 
+
+
+
 #import requests
 Fruity_response = requests.get("http://fruityvice.com/api/fruit"+fruit_choice)
 
