@@ -38,7 +38,7 @@ try:
 	if not fruit_choice:
 		streamlit.error("Please select a fruit to get information.")	
 	else: 
-	back_from_function = get_fruityvice_data(fruit_choice)
+		back_from_function = get_fruityvice_data(kiwi)
 	streamlit.dataframe(back_from_function)
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
