@@ -49,16 +49,33 @@ streamlit.stop()
 import snowflake.connector 
 
 streamlit.header("The fruit load list contains:")
-#Snowflake-related functions
+
+# Snowflake-related functions
 def get_fruit_load_list():
-	with my_cnx.cursor() as my_cur:
-		my_cur.execute("select * from fruit_load_list")
-		return my_cur.fetchall()
-# Add a button to load the fruit 
+    with my_cnx.cursor() as my_cur:
+        my_cur.execute("select * from fruit_load_list")
+        return my_cur.fetchall()
+
+# Add a button to load the fruit
 if streamlit.button('Get Fruit Load List'):
-	my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-	my_data_rows = get_fruit_load_list()
-	streamlit.dataframe(my_data_rows)
+    try:
+        # Establish the Snowflake connection
+        my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+        
+        # Call the function to get the fruit load list
+        my_data_rows = get_fruit_load_list()
+
+        # Display the data in a DataFrame
+        streamlit.dataframe(my_data_rows)
+
+    except snowflake.connector.errors.DatabaseError as e:
+        streamlit.error(f"Database Error: {e}")
+    except Exception as e:
+        streamlit.error(f"An error occurred: {e}")
+    finally:
+        # Close the connection in a finally block to ensure it's always closed
+        if 'my_cnx' in locals() and my_cnx.is_connected():
+            my_cnx.close()
 
 add_my_fruit = streamlit.text_input('What fruit would you like to add?')
 if streamlit.button('Add a fruit to the List'):
