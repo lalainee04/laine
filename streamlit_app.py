@@ -24,6 +24,7 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 # Display the table on the page.
 streamlit.dataframe(fruits_to_show)
 
+#import requests
 #New Section to display fruityvice api response 
 streamlit.header('Fruityvice Fruit Advice!')
 try:
@@ -37,7 +38,6 @@ else:
 
 execept URLError as e:
 	streamlit.error()
-#import requests
 # don't run anything past here while we troubleshoot
 streamlit.stop()
 
